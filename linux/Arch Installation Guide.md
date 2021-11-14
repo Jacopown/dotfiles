@@ -94,7 +94,7 @@ mkdir /mnt/shared_storage
 ```bash
 mount /dev/sdb3 /mnt/shared_storage
 ```
-### Create FSTB
+### Create FSTAB
 Create fstab file running 
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -183,7 +183,7 @@ Note that in the first line you need to tab once for the spacing and continue us
 ### GRUB
 Let's install grub and some other useful packages
 ```bash
-pacman -S grub efibootmgr os-prober mtools dosfstools base-devel linux-headers 
+pacman -S grub efibootmgr os-prober mtools dosfstools base-devel linux-headers ntfs-3g
 ```
 Now we'll install brub on the system 
 ```bash
@@ -204,4 +204,45 @@ GRUB_DISABLE_OS_PROBER=false
 save and exit and run
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
+```
+### Enable services
+Let's install some useful packages
+```bash
+pacman -S networkmanager network-manager-applet wireless_tools wpa_supplicant dialog bluez bluez-utils pulseaudio-bluetooth cups 
+```
+and enable them
+```bash
+systemctl enable NetworkManager
+```
+```bash
+systemctl enable bluetooth
+```
+```bash
+systemctl enable cups
+```
+### Setup Users
+Set root password
+```bash
+passwd
+```
+Now add a normal user 
+```bash
+useradd -mG wheel username
+```
+Change 'username' with yours. Set the password for the new user.
+```bash
+passwd username
+```
+And now modify wheel group options uncommenting the line "%wheel ALL=(ALL)ALL"
+```bash
+EDITOR=nvim visudo
+```
+```bash
+exit
+```
+```bash
+umount -a
+```
+```bash
+reboot
 ```
