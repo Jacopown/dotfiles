@@ -94,6 +94,12 @@ mkdir /mnt/shared_storage
 ```bash
 mount /dev/sdb3 /mnt/shared_storage
 ```
+### Base Installation
+Run
+```bash
+pacstrap /mnt base linux linux-firmware neovim
+```
+You can also add `intel-ucode` or `amd-ucode` if you have intel or amd processors. 
 ### Create FSTAB
 Create fstab file running 
 ```bash
@@ -246,3 +252,25 @@ umount -a
 ```bash
 reboot
 ```
+### Final setup
+If you want wifi connection 
+```bash
+nmtui
+```
+And install graphic card drivers
+```bash
+sudo pacman -S xf86-video-intel
+```
+for intel graphic cards
+```bash
+sudo pacman -S xf86-video-amdgpu
+```
+for amd graphic cards
+```bash
+sudo pacman -S nvidia nvidia-utils
+```
+for nvidia graphic cards
+```bash
+sudo pacman -S xf86-video-vmware
+```
+for virtual machines.
