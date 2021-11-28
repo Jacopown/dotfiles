@@ -1,17 +1,10 @@
 # This is the procedure I follow while installing Arch Linux on my machines
-## Dualbooting on windows 10 UEFI machine
-Let's start by checking if you really are on an UEFI system, run
-```bash
-ls /sys/firmware/efi/efivars
-```
-If you don't see any relevant output i'm sorry to tell you that this isn't the right section.
-If you see a bunch of lines appear you can proceed from here.
 ### Change keymap
 Arch sets the default keyboard to US, so if you have another keyboard layout you need to change it. Run 
 ```bash
-localectl list-keymaps | grep it
+ls /usr/share/kbd/keymaps/**/*.map.gz
 ```
-You can obviously change 'it' with any country code you're interested in and change the next command according to one of the results you got:
+You can obviously change the next command according to one of the results you got:
 ```bash
 loadkeys it
 ```
@@ -43,11 +36,87 @@ pacman -Syyy
 pacman -S reflector
 ```
 ```bash
-reflector -c Italy -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+reflector -c Italy -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 ```
 You need to change 'Italy' with your country and you can also change the -a value that represents the max number of hours from the last synchronization of the mirrors, it's better to set it $\geq 6$ so you'll surely find some mirrors.
-### Formatting 
-In this guide i'm going to install Arch on a separate disk from windows 10. If you want to install it on the same disk in a partition the process is similar but not exactly the same.
+## Partitioning
+I'll try to explain every possible scenario you'll meet while installing arch, so choose the right formatting guide that fits you. The only part of the guide that changes is the one on partitioning, the rest is universal.
+Let's start by checking if you are on an UEFI system, run
+```bash
+ls /sys/firmware/efi/efivars
+```
+If you don't see any relevant output choose guides for non-UEFI systems.
+If you see a bunch of lines appear choose guides for UEFI systems.
+### Partitioning for no dualboot Arch installation (UEFI)
+You can use 
+```bash
+sfdisk -l
+```
+```bash
+lsblk
+```
+to identify the disk where you want to install Arch. For example I'll install on *sda*.
+In the following commands you have to change the disk and partition codes to match yours.
+Start formatting the disk with
+```bash
+fdisk /dev/sda
+```
+Type 'd' and press Enter.
+Type 'n' and press Enter.
+Type '1' and press Enter.
+Press Enter for default option.
+Type '+512M' and press Enter.
+Type 't' and press Enter.
+Type 'L' and press Enter.
+Type the number corresponding to EFI system and press Enter.
+Type 'n' and press Enter.
+Keep pressing Enter until the process ends for default option in every step.
+Type 'w' and press Enter.
+Create filesystem on both partitions with
+```bash
+mkfs.fat -F32 /dev/sda1
+```
+```bash
+mkfs.ext4 /dev/sda2
+```
+Create boot directory
+```bash
+mkdir /boot/EFI
+```
+and mount both partitions 
+```bash
+mount /dev/sda1 /boot/EFI
+```
+```bash
+mount /dev/sda2 /mnt
+```
+### Partitioning for no dualboot Arch installation (non-UEFI)
+You can use 
+```bash
+sfdisk -l
+```
+```bash
+lsblk
+```
+to identify the disk where you want to install Arch. For example I'll install on *sda*.
+In the following commands you have to change the disk and partition codes to match yours.
+Start formatting the disk with
+```bash
+fdisk /dev/sda
+```
+Type 'd' and press Enter.
+Type 'n' and press Enter.
+Keep pressing Enter until the process ends for default option in every step.
+Type 'w' and press Enter.
+Create filesystem with
+```bash
+mkfs.ext4 /dev/sda1
+```
+and mount it
+```bash
+mount /dev/sda1 /mnt
+```
+### Partitioning for separate Arch and Windows disks (UEFI)
 You can use 
 ```bash
 sfdisk -l
@@ -65,8 +134,8 @@ fdisk /dev/sdd
 Than type 'g' and press Enter.
 Type 'n' and press Enter.
 Press Enter for default option.
-Press Enter for default oprion again.
-Press Enter for default oprion again.
+Press Enter for default option again.
+Press Enter for default option again.
 If asked type 'Y' and hit Enter to remove the existing signature.
 Type 'w' and hit Enter.
 Now we've created our partition for linux (you can check it running `lsblk`).
@@ -94,6 +163,12 @@ mkdir /mnt/shared_storage
 ```bash
 mount /dev/sdb3 /mnt/shared_storage
 ```
+### Partitioning for separate Arch and Windows disks (non-UEFI)
+TODO add procedure
+### Partitioning for single disk with both Arch and Windows (UEFI)
+TODO add procedure
+### Partitioning for single disk with both Arch and Windows (non-UEFI)
+TODO add procedure
 ### Base Installation
 Run
 ```bash
@@ -144,7 +219,7 @@ timedatectl list-timezones | grep Rome
 ```
 You need to change 'Rome' according to your timezone, and set it with
 ```bash
-ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
+timedatectl set-timezone Europe/Rome
 ```
 Now sync the hardware clock with the system clock
 ```bash
@@ -164,6 +239,10 @@ and
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ```
 Change "en_US.UTF-8" according to the line you uncommented in the previous step.
+Than
+```bash
+export LANG=en_US.UTF-8
+```
 If you've changed keymap at the beginning, run
 ```bash
 echo "KEYMAP=it" >> /etc/vconsole.conf
@@ -186,12 +265,42 @@ and on new line write
 127.0.1.1   hostname.localdomain    hostname
 ```
 Note that in the first line you need to tab once for the spacing and continue usig tab to reproduce the same structure as in the example. Change 'hostname' according to the one you set in the first step.
-### GRUB
+## GRUB installation
+Do you remember when I said that the guide is universal except for partitioning? Well I was lying.
+### GRUB installation for no dualboot Arch installation (UEFI)
 Let's install grub and some other useful packages
 ```bash
-pacman -S grub efibootmgr os-prober mtools dosfstools base-devel linux-headers ntfs-3g
+pacman -S grub efibootmgr base-devel linux-headers 
 ```
-Now we'll install brub on the system 
+Now we'll install grub on the system 
+```bash
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+```
+and create the grub config file
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### GRUB installation for no dualboot Arch installation (non-UEFI)
+Let's install grub and some other useful packages
+```bash
+pacman -S grub base-devel linux-headers 
+```
+Now we'll install grub on the system 
+```bash
+grub-install /dev/sda
+```
+and create the grub config file
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### GRUB installation for separate Arch and Windows disks (UEFI)
+Let's install grub and some other useful packages
+```bash
+pacman -S grub efibootmgr dosfstools base-devel linux-headers os-prober ntfs-3g mtools
+```
+Now we'll install grub on the system 
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
 ```
@@ -211,6 +320,13 @@ save and exit and run
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+### GRUB installation for separate Arch and Windows disks (non-UEFI)
+TODO add procedure
+### GRUB installation for single disk with both Arch and Windows (UEFI)
+TODO add procedure
+### GRUB installation for single disk with both Arch and Windows (non-UEFI)
+TODO add procedure
+
 ### Enable services
 Let's install some useful packages
 ```bash
