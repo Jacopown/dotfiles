@@ -61,17 +61,18 @@ Start formatting the disk with
 ```bash
 fdisk /dev/sda
 ```
-Type 'd' and press Enter.
-Type 'n' and press Enter.
-Type '1' and press Enter.
-Press Enter for default option.
-Type '+512M' and press Enter.
-Type 't' and press Enter.
-Type 'L' and press Enter.
-Type the number corresponding to EFI system and press Enter.
-Type 'n' and press Enter.
-Keep pressing Enter until the process ends for default option in every step.
-Type 'w' and press Enter.
+1. Type 'd' and press Enter for partition deleting.
+1. Type 'n' and press Enter for new partition.
+1. Press Enter for default primary partition.
+1. Press Enter again for partition number 1.
+1. Press Enter again for default first sector.
+1. Type '+512M' and press Enter for partition dimension.
+1. Type 't' and press Enter for changing partition type.
+1. Type 'L' and press Enter for a list of available types.
+1. Type the code corresponding to EFI system and press Enter.
+1. Type 'n' and press Enter for new partition.
+1. Keep pressing Enter until the process ends for default option in every step.
+1. Type 'w' and press Enter.
 Create filesystem on both partitions with
 ```bash
 mkfs.fat -F32 /dev/sda1
@@ -79,13 +80,7 @@ mkfs.fat -F32 /dev/sda1
 ```bash
 mkfs.ext4 /dev/sda2
 ```
-Create boot directory
-```bash
-mkdir /boot/EFI
-```
-and mount both partitions 
-```bash
-mount /dev/sda1 /boot/EFI
+Mount root partition
 ```
 ```bash
 mount /dev/sda2 /mnt
@@ -272,6 +267,14 @@ Let's install grub and some other useful packages
 ```bash
 pacman -S grub efibootmgr base-devel linux-headers 
 ```
+Create boot directory
+```bash
+mkdir /boot/EFI
+```
+and mount boot partition
+```bash
+mount /dev/sda1 /boot/EFI
+```
 Now we'll install grub on the system 
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
@@ -285,6 +288,14 @@ grub-mkconfig -o /boot/grub/grub.cfg
 Let's install grub and some other useful packages
 ```bash
 pacman -S grub base-devel linux-headers 
+```
+Create boot directory
+```bash
+mkdir /boot/EFI
+```
+and mount boot partition
+```bash
+mount /dev/sda1 /boot/EFI
 ```
 Now we'll install grub on the system 
 ```bash
