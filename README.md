@@ -2,8 +2,8 @@
 
 The aim of this repository is to collect all my dotfiles to let me (and eventually everyone interested) to replicate my linux setups.  
 I try to be as detailed as possible because of my bad memory.  
-In all the Window Managers installation guides I'm assuming u have a clean Arch installation made by following my guide.  
-I'm currently working on all this setups and some of them already need an update, see TODO.
+In all the Window Managers installation guides I'm assuming you have a clean Arch installation made by following my guide.  
+I'm currently working on all this setups and some of them already need an update, see [TODO](#todo).
 
 ### Index
 
@@ -25,7 +25,7 @@ I'm currently working on all this setups and some of them already need an update
 
 ### Dependencies
 
-For my AwesomeWm build i use some specific tool (i.e. some keybindinded tools) that we'll be install right now, more general tools will have a dedicated section.  
+For my AwesomeWm build i use some specific tools (i.e. some keybindinded tools) that we'll be install right now, more general tools will have a dedicated section.  
 I use Paru as AUR helper so...
 
 ```bash
@@ -39,7 +39,7 @@ rm -rf ~/tmp
 ...and let's install everything we need:
 
 ```bash
-paru xorg xorg-xinit awesome alacritty git nitrogen wget rofi  lxappearance qt5ct brave-bin 
+paru xorg xorg-xinit awesome alacritty git nitrogen wget rofi lxappearance qt5ct brave-bin 
 ```
 
 If you'd like to use another terminal emulator skip the alacritty package.
@@ -111,7 +111,7 @@ zsh
 ```
 
 At this point you can configure the shell as you like, I kept everything default.  
-We're going to overwrite these settings by coping my config file so remember to merge your new setting in my configs when at that point.
+We're going to overwrite these settings by coping my config file so remember to merge your new settings in my configs when at that point.
 
 Set zsh as your default shell...
 
@@ -172,3 +172,9 @@ Now restart your terminal.
 - [ ] Add description for [AwesomeWm](#awesomewm)
 - [ ] Add feature list for [AwesomeWm](#awesomewm)
 - [ ] Add screenshots for [AwesomeWm](#awesomewm)
+- [ ] Add feature list for [zsh](#zsh)
+- [ ] Add screenshots for [zsh](#zsh)
+- [ ] Add screenshots for [Alacritty](#alacritty)
+- [ ] Add and update st
+- [ ] Add and update DWM
+- [ ] Add a section for tools and applications I generally use
