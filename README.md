@@ -39,7 +39,7 @@ rm -rf ~/tmp
 ...and let's install everything we need:
 
 ```bash
-paru xorg xorg-xinit awesome alacritty git nitrogen wget rofi lxappearance qt5ct brave-bin 
+paru -S xorg xorg-xinit awesome alacritty nitrogen wget rofi lxappearance qt5ct brave-bin 
 ```
 
 If you'd like to use another terminal emulator skip the alacritty package.
@@ -49,7 +49,8 @@ If you'd like to use another terminal emulator skip the alacritty package.
 First of all let's copy my AwesomeWM config directory:
 
 ```bash
-mkdir ~/Downloads 
+mkdir ~/Downloads
+mkdir ~/.config 
 git -C ~/Downloads clone https://github.com/Jacopown/dotfiles.git
 cp -r ~/Downloads/dotfiles/linux/config/awesome ~/.config
 ```
@@ -68,7 +69,7 @@ cp -r ~/Downloads/dotfiles/wallpapers/ ~/Pictures/
 Now we'll install the login manager, the greeter and the login manager theme. Than we enable it:
 
  ```bash
-paru lightdm lightdm-webkit2-greeter lightdm-webkit-theme-eather
+paru -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-aether
 sudo systemctl enable lightdm
  ```
 
@@ -106,7 +107,7 @@ As of now I'm using the p10k theme and oh-my-zsh on my zsh setup.
 Let's install and start our shell
 
 ```bash
-paru zsh
+paru -S zsh
 zsh
 ```
 
@@ -162,7 +163,7 @@ Let's end this by installing some plugins and tools for our cli:
 ```bash
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-paru thefuck
+paru -S thefuck
 ```
 
 Now restart your terminal.
@@ -178,3 +179,5 @@ Now restart your terminal.
 - [ ] Add and update st
 - [ ] Add and update DWM
 - [ ] Add a section for tools and applications I generally use
+- [ ] Add picom for trasparency and rounded corners [Alacritty](#alacritty)
+- [ ] Add gtk and qt themes
