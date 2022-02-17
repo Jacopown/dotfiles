@@ -181,3 +181,4 @@ Now restart your terminal.
 - [ ] Add a section for tools and applications I generally use
 - [ ] Add picom for trasparency and rounded corners [Alacritty](#alacritty)
 - [ ] Add gtk and qt themes
+- [ ] Add nvim config
