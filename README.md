@@ -2,7 +2,7 @@
 
 The aim of this repository is to collect all my dotfiles to let me (and eventually everyone interested) to replicate my linux setups.  
 I try to be as detailed as possible because of my bad memory.  
-In all the Window Managers installation guides I'm assuming you have a clean Arch installation made by following my guide.  
+In all the Window Managers installation guides I'm assuming you have a clean Arch installation made by following [my guide](https://github.com/Jacopown/dotfiles/blob/main/linux/Arch%20Installation%20Guide.md).  
 I'm currently working on all this setups and some of them already need an update, see [TODO](#todo).
 
 ### Index
