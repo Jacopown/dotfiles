@@ -51,7 +51,7 @@ First of all let's copy my AwesomeWM config directory:
 ```bash
 mkdir ~/Downloads 
 git -C ~/Downloads clone https://github.com/Jacopown/dotfiles.git
-cp -r ~/Downloads/dotfiles/linux/Awesome/config/awesome ~/.config
+cp -r ~/Downloads/dotfiles/linux/config/awesome ~/.config
 ```
 
 ### Wallpapers
@@ -85,7 +85,7 @@ In this setup I used Alacritty with zsh, feel free to install averything you pre
 The last step is to copy my rofi config files:
 
 ```bash
-cp -r ~/Downloads/dotfiles/linux/Awesome/config/rofi ~/.config
+cp -r ~/Downloads/dotfiles/linux/config/rofi ~/.config
 ```
 
 ## Alacritty
@@ -94,7 +94,7 @@ This terminal installation uses my zsh theme font, if you're planning to use ano
 Copy my Alacritty config file:
 
 ```bash
-cp -r ~/Downloads/dotfiles/linux/Awesome/config/alacritty ~/.config
+cp -r ~/Downloads/dotfiles/linux/config/alacritty ~/.config
 ```
 
 and restart the terminal to see the changes.  
@@ -153,8 +153,8 @@ sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/
 Copy my shell and theme configs:
 
 ```bash
-cp -r ~/Downloads/dotfiles/linux/Awesome/.zshrc ~/
-cp -r ~/Downloads/dotfiles/linux/Awesome/.p10k.zsh ~/
+cp -r ~/Downloads/dotfiles/linux/.zshrc ~/
+cp -r ~/Downloads/dotfiles/linux/.p10k.zsh ~/
 ```
 
 Let's end this by installing some plugins and tools for our cli:
