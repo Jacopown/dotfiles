@@ -504,10 +504,12 @@ TODO add procedure
 Let's install some useful packages
 
 ```bash
-pacman -S networkmanager network-manager-applet wireless_tools wpa_supplicant dialog bluez bluez-utils pulseaudio-bluetooth cups git
+pacman -S networkmanager network-manager-applet wireless_tools wpa_supplicant dialog pipewire pipewire-alsa pipewire-pulse pipewire-jack bluez bluez-utils cups git svn
 ```
 
-and enable them
+When asked choose WirePlumber as session manager for pipewire.
+
+Now enable them:
 
 ```bash
 systemctl enable NetworkManager
