@@ -19,9 +19,14 @@ I'm currently working on all this setups and some of them already need an update
   - [Alacritty](#alacritty)
   - st
   - [zsh](#zsh)
+- [Apps and Tools](#apps-and-tools)
+  - [NVim](#nvim)
+  - [mlocate](#mlocate)
 - [TODO](#todo)
 
 ## AwesomeWM
+
+At the end of the installation process, you can jump to [Apps and Tools](#apps-and-tools) to add usefull programs and their configurations.
 
 ### Dependencies
 
@@ -39,7 +44,7 @@ rm -rf ~/tmp
 ...and let's install everything we need:
 
 ```bash
-paru -S xorg xorg-xinit awesome alacritty nitrogen wget rofi lxappearance qt5ct brave-bin 
+paru -S xorg xorg-xinit awesome alacritty nitrogen wget rofi lxsession lxappearance qt5ct brave-bin 
 ```
 
 If you'd like to use another terminal emulator skip the alacritty package.
@@ -49,10 +54,7 @@ If you'd like to use another terminal emulator skip the alacritty package.
 First of all let's copy my AwesomeWM config directory:
 
 ```bash
-mkdir ~/Downloads
-mkdir ~/.config 
-git -C ~/Downloads clone https://github.com/Jacopown/dotfiles.git
-cp -r ~/Downloads/dotfiles/linux/config/awesome ~/.config
+svn export https://github.com/Jacopown/dotfiles/trunk/linux/config/alacritty ~/.config
 ```
 
 ### Wallpapers
@@ -60,8 +62,7 @@ cp -r ~/Downloads/dotfiles/linux/config/awesome ~/.config
 By default my build reads the whole wallpapers folder and sets a random one everytime you restart the WM, you can edit nitrogen autostart command at the end of `~/.config/awesome/rc.lua` as you prefer to change this behaviour.
 
 ```bash
-mkdir ~/Pictures 
-cp -r ~/Downloads/dotfiles/wallpapers/ ~/Pictures/
+svn export https://github.com/Jacopown/dotfiles/trunk/wallpapers ~/Pictures
 ```
 
 ### Login Manager
@@ -86,7 +87,7 @@ In this setup I used Alacritty with zsh, feel free to install averything you pre
 The last step is to copy my rofi config files:
 
 ```bash
-cp -r ~/Downloads/dotfiles/linux/config/rofi ~/.config
+svn export https://github.com/Jacopown/dotfiles/trunk/linux/config/rofi ~/.config
 ```
 
 ## Alacritty
@@ -95,7 +96,7 @@ This terminal installation uses my zsh theme font, if you're planning to use ano
 Copy my Alacritty config file:
 
 ```bash
-cp -r ~/Downloads/dotfiles/linux/config/alacritty ~/.config
+svn export https://github.com/Jacopown/dotfiles/trunk/linux/config/alacritty ~/.config
 ```
 
 and restart the terminal to see the changes.  
@@ -108,11 +109,7 @@ Let's install and start our shell
 
 ```bash
 paru -S zsh
-zsh
 ```
-
-At this point you can configure the shell as you like, I kept everything default.  
-We're going to overwrite these settings by coping my config file so remember to merge your new settings in my configs when at that point.
 
 Set zsh as your default shell...
 
@@ -154,8 +151,8 @@ sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/
 Copy my shell and theme configs:
 
 ```bash
-cp -r ~/Downloads/dotfiles/linux/.zshrc ~/
-cp -r ~/Downloads/dotfiles/linux/.p10k.zsh ~/
+svn export https://github.com/Jacopown/dotfiles/trunk/linux/.zshrc~/
+svn export https://github.com/Jacopown/dotfiles/trunk/linux/.p10k.zsh ~/
 ```
 
 Let's end this by installing some plugins and tools for our cli:
@@ -168,6 +165,33 @@ paru -S thefuck
 
 Now restart your terminal.
 
+## Apps and Tools
+
+In this section I'll list all the tools, programs and applications that I normally use and if needed, their configs.
+
+### NVim
+
+Simply copy my configs:
+
+```bash
+cp -r ~/Downloads/dotfiles/linux/config/nvim ~/.config
+```
+
+Than open nvim and run:
+
+```
+:PlugInstall
+```
+
+### mlocate
+
+A simple cli command to search a files or folders running `locate` seguito dal nome da cercare.
+
+```bash
+paru -S mlocate
+sudo updatedb
+```
+
 ## TODO
 
 - [ ] Add description for [AwesomeWm](#awesomewm)
@@ -178,7 +202,9 @@ Now restart your terminal.
 - [ ] Add screenshots for [Alacritty](#alacritty)
 - [ ] Add and update st
 - [ ] Add and update DWM
-- [ ] Add a section for tools and applications I generally use
+- [ ] Add programs and tools list
 - [ ] Add picom for trasparency and rounded corners [Alacritty](#alacritty)
 - [ ] Add gtk and qt themes
-- [ ] Add nvim config
+- [ ] Add volume control in [Alacritty](#alacritty)
+- [x] Add a section for tools and applications I generally use
+- [x] Add nvim config
