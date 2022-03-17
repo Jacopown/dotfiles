@@ -194,6 +194,7 @@ sudo updatedb
 
 ## TODO
 
+- [ ] Update all guides to match new dotfiles structure optimization for stow
 - [ ] Add description for [AwesomeWm](#awesomewm)
 - [ ] Add feature list for [AwesomeWm](#awesomewm)
 - [ ] Add screenshots for [AwesomeWm](#awesomewm)
