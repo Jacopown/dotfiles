@@ -65,7 +65,9 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- TELESCOPE --
 ---------------
 
-keymap("n", "ff", ":Telescope file_browser<CR>", opts)
+keymap("n", "ff", ":Telescope find_files<CR>", opts)
 keymap("n", "fh", ":Telescope oldfiles<CR>", opts)
 keymap("n", "fg", ":Telescope live_grep<CR>", opts)
 
+-- Nvimtree
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
