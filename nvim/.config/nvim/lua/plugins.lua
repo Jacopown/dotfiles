@@ -53,9 +53,11 @@ return packer.startup(function(use)
     -- Icons --
     use 'kyazdani42/nvim-web-devicons'
 
+    -- COLORIZER --
+    use 'norcalli/nvim-colorizer.lua'
+
     -- File explorer --
-    use {
-        'kyazdani42/nvim-tree.lua',
+    use {'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('plugins/nvim-tree')
@@ -117,13 +119,12 @@ return packer.startup(function(use)
         end}
 
     -- GIT SIGNS --
-    use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-        'nvim-lua/plenary.nvim'},
-    config = function ()
-        require("plugins/gitsigns")
-    end}
+    use {'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'},
+        config = function ()
+            require("plugins/gitsigns")
+        end}
 
     -- TELESCOPE --
     use 'nvim-lua/plenary.nvim'                         -- Required by Telescope.
