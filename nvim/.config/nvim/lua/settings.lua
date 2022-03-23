@@ -3,13 +3,13 @@ local options = {
 
     -- General --
 
-	backspace = 'indent,eol,start',         -- Without this	on some times backspace did not work correctly. 
+	backspace = 'indent,eol,start',         -- Without this	on some times backspace did not work correctly.
     backup = false,                         -- Enable backup file creation.
 	clipboard = 'unnamedplus',              -- Enables neovim to access the system clipboard.
     cmdheight = 2,                          -- Sets height of command line.
     completeopt = {'menuone', 'noselect'},  -- Settings for cmd autocompletion menu.
     conceallevel = 0,                       -- For better readability in markdown.
-	cursorline = true,                      -- Enable cursor line.
+	cursorline = false,                      -- Enable cursor line.
 	errorbells = true,						-- Enable bell on error.
     fileencoding = 'utf-8',                 -- The file encoding.
     -- guifont = '',                           -- Still not choosen.
@@ -19,7 +19,7 @@ local options = {
     pumheight = 10,                         -- Pop Up menu height.
     scrolloff = 8,                          -- Number of lines always on top and bottom of the cursor when scrolling.
 	showmatch = false,		                -- When closing a bracket nvim shows for a moment his opening bracket.
-    showmode = false,                       -- Enable showing in the bottom left, the current mode. 
+    showmode = false,                       -- Enable showing in the bottom left, the current mode.
     sidescrolloff = 8,                      -- Same as scrolloff for lateral scrolling.
     signcolumn = 'yes',                     -- Enable a column, to the left of line numbers, for signs.
     splitbelow = true,                      -- Force all horizontal splits to go below current window.
@@ -28,7 +28,7 @@ local options = {
 	termguicolors = true,                   -- Enables 24-bit RGB color in the TUI
 	title = false,							-- Enable title
     timeoutlen = 1000,                      -- Milliseconds to wait for a mapped sequence to complete.
-    undofile = true,                        -- Enable persistent undo. 
+    undofile = true,                        -- Enable persistent undo.
     updatetime = 300,                       -- Faster completion.
 	visualbell = true,						-- Use visual bell instead of beeping
     wrap = false,                           -- Enable too long lines to go newline  instead of going outside the view.
@@ -38,18 +38,18 @@ local options = {
 
 	number = true,                          -- Enable line numbers
 	numberwidth = 4,                        -- Sets width of line numbers section
-	relativenumber = false,                 -- Enable numbers to count up and down from the current line and not from the beginning 
-	ruler = false,                          -- Enable display of line and column 
+	relativenumber = false,                 -- Enable numbers to count up and down from the current line and not from the beginning
+	ruler = false,                          -- Enable display of line and column
 
     -- Indent --
 
 	autoindent = true,                      -- Use same indenting on new lines
-	expandtab = true,                       -- Enable conversion of tabs to spaces.            
+	expandtab = true,                       -- Enable conversion of tabs to spaces.
 	shiftround = true,                      -- Round indent to multiple of 'shiftwidth'
     shiftwidth = 4,                         -- Number of spaces for each indentation.
 	smartindent = true,                     -- Enabel smart autoindenting.
-	smarttab = true,             
-	tabstop = 4,                            -- Number of spaces a tab. 
+	smarttab = true,
+	tabstop = 4,                            -- Number of spaces a tab.
 	textwidth = 80,                         -- Text width maximum chars before wrapping.
 
     -- Search --
@@ -57,7 +57,7 @@ local options = {
 	hlsearch = true,						-- Enable search highlight.
 	ignorecase = true,						-- Enable search case insensitive.
 	incsearch = false,						-- Enable incremental search.
-    smartcase = true,                       -- Override the 'ignorecase' option if searching with an uppercase character. 
+    smartcase = true,                       -- Override the 'ignorecase' option if searching with an uppercase character.
 
 }
 
