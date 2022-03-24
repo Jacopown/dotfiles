@@ -12,9 +12,9 @@ treesitter.setup {
         enable = true, -- false will disable the whole extension
         disable = { "" }, -- list of language that will be disabled
         additional_vim_regex_highlighting = false,
-    autopairs = {
-        enable = true,
-	},
+        autopairs = {
+            enable = true,
+        },
     },
     indent = { enable = true, disable = { "" } },
     rainbow = {
@@ -24,5 +24,9 @@ treesitter.setup {
         max_file_lines = nil, -- Do not enable for files with more than n lines, int
         -- colors = {}, -- table of hex strings
         -- termcolors = {} -- table of colour name strings
+        context_commentstring = {
+            enable = true,
+            enable_autocmd = false,
+        },
     }
 }

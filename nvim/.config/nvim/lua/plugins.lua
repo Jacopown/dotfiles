@@ -118,6 +118,14 @@ return packer.startup(function(use)
             require('plugins/autopairs')
         end}
 
+    -- COMMENTS --
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
+    use {'numToStr/Comment.nvim',
+        requires = 'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function()
+            require('plugins/comments')
+        end}
+
     -- GIT SIGNS --
     use {'lewis6991/gitsigns.nvim',
         requires = {
