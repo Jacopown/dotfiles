@@ -44,17 +44,10 @@ packer.init {
 
 return packer.startup(function(use)
 
-    -- Let's packer manage himself
-    use 'wbthomason/packer.nvim'
-
-    -- GruvBox Color Scheme --
-    use 'morhetz/gruvbox'
-
-    -- Icons --
-    use 'kyazdani42/nvim-web-devicons'
-
-    -- COLORIZER --
-    use 'norcalli/nvim-colorizer.lua'
+    use 'wbthomason/packer.nvim'        -- Let's packer manage himself
+    use 'morhetz/gruvbox'               -- GruvBox Color Scheme
+    use 'kyazdani42/nvim-web-devicons'  -- Icons
+    use 'norcalli/nvim-colorizer.lua'   -- Hex code colorizer
 
     -- File explorer --
     use {'kyazdani42/nvim-tree.lua',
@@ -85,7 +78,8 @@ return packer.startup(function(use)
         config = function()
             require('plugins/treesitter')
         end}
-    use 'p00f/nvim-ts-rainbow'                  -- Rainbow parentheses
+    use {'p00f/nvim-ts-rainbow',
+    requires = 'nvim-treesitter/nvim-treesitter',}  -- Rainbow parentheses
 
     -- AUTOCOMPLETION --
     use 'hrsh7th/cmp-nvim-lsp'                  -- LSP completions module.
@@ -152,6 +146,12 @@ return packer.startup(function(use)
         config = function ()
             require('plugins/alpha')
         end}
+
+    -- TOGGLE TERM --
+    use {"akinsho/toggleterm.nvim",
+        config = function ()
+            require('plugins/toggleterm')
+        end}       -- Nice terminal in NeoVim
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
