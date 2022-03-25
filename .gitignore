@@ -1,4 +1,5 @@
 .DS_Store
 old_init.vim
 packer_compiled.lua
-nvim.md
+todo_nvim.md
+
