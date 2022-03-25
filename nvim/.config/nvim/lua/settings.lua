@@ -49,6 +49,7 @@ local options = {
     shiftwidth = 4,                         -- Number of spaces for each indentation.
 	smartindent = true,                     -- Enabel smart autoindenting.
 	smarttab = true,
+    softtabstop = 4,
 	tabstop = 4,                            -- Number of spaces a tab.
 	textwidth = 80,                         -- Text width maximum chars before wrapping.
 
