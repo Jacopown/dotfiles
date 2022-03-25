@@ -31,7 +31,7 @@ local options = {
     undofile = true,                        -- Enable persistent undo.
     updatetime = 300,                       -- Faster completion.
 	visualbell = true,						-- Use visual bell instead of beeping
-    wrap = false,                           -- Enable too long lines to go newline  instead of going outside the view.
+    wrap = true,                           -- Enable too long lines to go newline  instead of going outside the view.
     writebackup = false,                    -- Enable backup file before overwriting a file.
 
     -- Numbers --
