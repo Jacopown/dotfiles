@@ -48,8 +48,9 @@ return packer.startup(function(use)
     use 'morhetz/gruvbox'               -- GruvBox Color Scheme
     use 'kyazdani42/nvim-web-devicons'  -- Icons
     use 'norcalli/nvim-colorizer.lua'   -- Hex code colorizer
+    use 'nvim-lua/plenary.nvim'         -- Required by some plugins.
 
-    -- File explorer --
+    -- FILE EXPLORER --
     use {'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
@@ -57,10 +58,10 @@ return packer.startup(function(use)
         end}
 
     -- BUFFER LINE --
-    use 'moll/vim-bbye'
+    use 'famiu/bufdelete.nvim'
     use {'akinsho/bufferline.nvim',
         requires = {'kyazdani42/nvim-web-devicons',
-                    'moll/vim-bbye',},
+                    'famiu/bufdelete.nvim',},
     	config = function()
             require('plugins/bufferline')
         end}
@@ -93,7 +94,8 @@ return packer.startup(function(use)
                     'hrsh7th/cmp-buffer',
                     'hrsh7th/cmp-path',
                     'hrsh7th/cmp-nvim-lsp',
-                    'hrsh7th/cmp-nvim-lua'},
+                    'hrsh7th/cmp-nvim-lua',
+                    'saadparwaiz1/cmp_luasnip'},
         config = function()
             require('plugins/cmp')
         end}
@@ -129,7 +131,6 @@ return packer.startup(function(use)
         end}
 
     -- TELESCOPE --
-    use 'nvim-lua/plenary.nvim'                         -- Required by Telescope.
     use {'nvim-telescope/telescope-fzf-native.nvim',    -- Telescope sorter.
         run = 'make',}
     use  'nvim-telescope/telescope-file-browser.nvim'
