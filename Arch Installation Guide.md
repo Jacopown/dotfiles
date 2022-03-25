@@ -504,7 +504,7 @@ TODO add procedure
 Let's install some useful packages
 
 ```bash
-pacman -S networkmanager network-manager-applet wireless_tools wpa_supplicant dialog pipewire pipewire-alsa pipewire-pulse pipewire-jack bluez bluez-utils cups git svn
+pacman -S networkmanager network-manager-applet wireless_tools wpa_supplicant dialog pipewire pipewire-alsa pipewire-pulse pipewire-jack bluez bluez-utils cups git stow
 ```
 
 When asked choose WirePlumber as session manager for pipewire.
