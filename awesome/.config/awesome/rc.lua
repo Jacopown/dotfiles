@@ -567,6 +567,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --{{{Autostart
-awful.spawn.with_shell("nitrogen --set-scaled ~/Pictures/wallpapers/ --random &")
+awful.spawn.with_shell("nitrogen --set-scaled ~/dotfiles/wallpapers/ --random &")
 awful.spawn.with_shell("lxsession &")
 ---}}}
