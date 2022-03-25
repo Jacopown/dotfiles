@@ -1,8 +1,8 @@
 # My dotfiles collection
 
 The aim of this repository is to collect all my dotfiles to let me (and eventually everyone interested) to replicate my linux setups.  
-I try to be as detailed as possible because of my bad memory.  
-In all the Window Managers installation guides I'm assuming you have a clean Arch installation made by following [my guide](https://github.com/Jacopown/dotfiles/blob/main/linux/Arch%20Installation%20Guide.md).  
+I'm trying to be as detailed as possible because of my bad memory.  
+In all the Window Managers installation guides I'm assuming you have a clean Arch installation made by following [my guide](https://github.com/Jacopown/dotfiles/blob/main/Arch%20Installation%20Guide.md) and this repository cloned in your home directory.  
 I'm currently working on all this setups and some of them already need an update, see [TODO](#todo).
 
 ### Index
@@ -54,16 +54,12 @@ If you'd like to use another terminal emulator skip the alacritty package.
 First of all let's copy my AwesomeWM config directory:
 
 ```bash
-svn export https://github.com/Jacopown/dotfiles/trunk/linux/config/alacritty ~/.config
+stow ~/dotfiles/awesome
 ```
 
 ### Wallpapers
 
 By default my build reads the whole wallpapers folder and sets a random one everytime you restart the WM, you can edit nitrogen autostart command at the end of `~/.config/awesome/rc.lua` as you prefer to change this behaviour.
-
-```bash
-svn export https://github.com/Jacopown/dotfiles/trunk/wallpapers ~/Pictures
-```
 
 ### Login Manager
 
@@ -84,19 +80,19 @@ In this setup I used Alacritty with zsh, feel free to install averything you pre
 
 ### Rofi
 
-The last step is to copy my rofi config files:
+The last step is to symlink my rofi config files:
 
 ```bash
-svn export https://github.com/Jacopown/dotfiles/trunk/linux/config/rofi ~/.config
+stow ~/dotfiles/rofi/
 ```
 
 ## Alacritty
 
 This terminal installation uses my zsh theme font, if you're planning to use another remember to change it in the config file.  
-Copy my Alacritty config file:
+Symlink my Alacritty config file:
 
 ```bash
-svn export https://github.com/Jacopown/dotfiles/trunk/linux/config/alacritty ~/.config
+stow ~/dotfiles/linuxAlacritty/
 ```
 
 and restart the terminal to see the changes.  
@@ -148,11 +144,10 @@ sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/
 sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
 ```
 
-Copy my shell and theme configs:
+Symlink my shell configs:
 
 ```bash
-svn export https://github.com/Jacopown/dotfiles/trunk/linux/.zshrc~/
-svn export https://github.com/Jacopown/dotfiles/trunk/linux/.p10k.zsh ~/
+stow ~/dotfiles/zsh/
 ```
 
 Let's end this by installing some plugins and tools for our cli:
@@ -169,7 +164,7 @@ Now restart your terminal.
 
 In this section I'll list all the tools, programs and applications that I normally use and if needed, their configs.
 
-### NVim
+### NeoVim
 
 Simply copy my configs:
 
@@ -185,7 +180,7 @@ Than open nvim and run:
 
 ### mlocate
 
-A simple cli command to search a files or folders running `locate` seguito dal nome da cercare.
+A simple cli command to search files or folders running `locate` seguito dal nome da cercare.
 
 ```bash
 paru -S mlocate
@@ -194,7 +189,6 @@ sudo updatedb
 
 ## TODO
 
-- [ ] Update all guides to match new dotfiles structure optimization for stow
 - [ ] Add description for [AwesomeWm](#awesomewm)
 - [ ] Add feature list for [AwesomeWm](#awesomewm)
 - [ ] Add screenshots for [AwesomeWm](#awesomewm)
@@ -207,5 +201,8 @@ sudo updatedb
 - [ ] Add picom for trasparency and rounded corners [Alacritty](#alacritty)
 - [ ] Add gtk and qt themes
 - [ ] Add volume control in [Alacritty](#alacritty)
+- [ ] Update NeoVim section with a link to a separate .md file with my
+  configuration infos and installation guide. [NeoVim](#NeoVim)
+- [x] Update all guides to match new dotfiles structure optimization for stow
 - [x] Add a section for tools and applications I generally use
 - [x] Add nvim config
