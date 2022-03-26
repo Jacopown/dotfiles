@@ -20,7 +20,7 @@ I'm currently working on all this setups and some of them already need an update
   - st
   - [zsh](#zsh)
 - [Apps and Tools](#apps-and-tools)
-  - [NVim](#nvim)
+  - [NeoVim](#neovim)
   - [mlocate](#mlocate)
 - [TODO](#todo)
 
@@ -51,7 +51,7 @@ If you'd like to use another terminal emulator skip the alacritty package.
 
 ### Base Installation
 
-First of all let's copy my AwesomeWM config directory:
+First of all let's symlink my AwesomeWM config directory:
 
 ```bash
 stow ~/dotfiles/awesome
@@ -88,7 +88,18 @@ stow ~/dotfiles/rofi/
 
 ## Alacritty
 
-This terminal installation uses my zsh theme font, if you're planning to use another remember to change it in the config file.  
+This terminal installation uses [my zsh](#zsh) theme font, if you're planning to use another remember to change it in the config file.  
+
+First of all let's install our font:
+
+```bash
+sudo mkdir -p /usr/local/share/fonts/ttf/MesloNerdFontPatched
+sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+```
+
 Symlink my Alacritty config file:
 
 ```bash
@@ -96,12 +107,11 @@ stow ~/dotfiles/linuxAlacritty/
 ```
 
 and restart the terminal to see the changes.  
-Now we can install our shell, in this case i'll use [my zsh guide](#zsh).
 
 ## zsh
 
 As of now I'm using the p10k theme and oh-my-zsh on my zsh setup.
-Let's install and start our shell
+Let's install our shell
 
 ```bash
 paru -S zsh
@@ -122,25 +132,14 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 git -C ~/.oh-my-zsh/custom/themes clone https://github.com/romkatv/powerlevel10k.git
 ```
 
-We are missing a custom font, so let's install it:
+Now install the patched font used by powerlevel10k (if you follow the shell
+guide as a standalone guide remember to set this font as your terminal font):
 
 ```bash
 sudo mkdir -p /usr/local/share/fonts/ttf/MesloNerdFontPatched
-```
-
-```bash
 sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-```
-
-```bash
 sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-```
-
-```bash
 sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-```
-
-```bash
 sudo wget -P /usr/local/share/fonts/ttf/MesloNerdFontPatched https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
 ```
 
@@ -150,7 +149,7 @@ Symlink my shell configs:
 stow ~/dotfiles/zsh/
 ```
 
-Let's end this by installing some plugins and tools for our cli:
+Let's finish this up by installing some plugins and tools for our cli:
 
 ```bash
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
