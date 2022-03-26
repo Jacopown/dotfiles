@@ -1,3 +1,3 @@
 # NeoVim
 
-![Preview](assets/images/NeoVimPreview.png)
+![Preview](../assets/images/NeoVimPreview.png)
