@@ -16,7 +16,7 @@ treesitter.setup {
             enable = true,
         },
     },
-    indent = { enable = true, disable = { "" } },
+    indent = { enable = true, disable = { "python" } },
     rainbow = {
         enable = true,
         disable = { "" },
