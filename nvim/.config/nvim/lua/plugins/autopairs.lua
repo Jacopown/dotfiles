@@ -5,22 +5,20 @@ if not status_ok then
 end
 
 npairs.setup {
-  check_ts = true,
-  ts_config = {
-    lua = { "string", "source" },
-    javascript = { "string", "template_string" },
-    java = false,
-  },
-  disable_filetype = { "TelescopePrompt" },
-  fast_wrap = {
-    map = "<M-e>",
-    chars = { "{", "[", "(", '"', "'" },
-    pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-    offset = -1, -- Offset from pattern match
-    end_key = "$",
-    keys = "qwertyuiopzxcvbnmasdfghjkl",
-    check_comma = true,
-  },
+    check_ts = true,
+    disable_filetype = { "TelescopePrompt" },
+    enable_check_bracket_line = false,
+    fast_wrap = {
+        map = "<leader>p",
+        chars = { "{", "[", "(", '"', "'" },
+        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+        offset = -1, -- Offset from pattern match
+        end_key = "$",
+        keys = "qwertyuiopzxcvbnmasdfghjkl",
+        check_comma = true,
+        highlight = 'Search',
+        highlight_grey='Comment'
+    },
 }
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
