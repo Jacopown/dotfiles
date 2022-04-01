@@ -1,5 +1,5 @@
 .DS_Store
 old_init.vim
-nvim/.config/nvim/plugin/
+plugin/packer_compiled.lua
 todo_nvim.md
 
