@@ -9,7 +9,7 @@ npairs.setup {
     disable_filetype = { "TelescopePrompt" },
     enable_check_bracket_line = false,
     fast_wrap = {
-        map = "<leader>p",
+        map = "<C-a>",
         chars = { "{", "[", "(", '"', "'" },
         pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
         offset = -1, -- Offset from pattern match
