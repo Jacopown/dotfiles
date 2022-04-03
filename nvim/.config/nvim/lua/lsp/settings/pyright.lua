@@ -1,0 +1,2 @@
+-- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+-- if needed add some configs from here.
