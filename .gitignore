@@ -1,5 +1,5 @@
 .DS_Store
 old_init.vim
-/plugin/
+nvim/.config/nvim/plugin/
 todo_nvim.md
 
