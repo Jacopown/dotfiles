@@ -1,7 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup")
-local menubar = require("menubar")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -24,7 +23,3 @@ mylauncher = awful.widget.launcher({
   image = beautiful.awesome_icon,
   menu = mymainmenu 
 })
- 
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
