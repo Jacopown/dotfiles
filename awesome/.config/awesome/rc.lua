@@ -32,11 +32,6 @@ require("autostart")
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
-
-
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
