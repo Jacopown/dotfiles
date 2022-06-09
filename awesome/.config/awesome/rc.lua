@@ -28,8 +28,7 @@ require("rules")
 require("signals")
 require("autostart")
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+
 
 -- {{{ Wibar
 local function set_wallpaper(s)
