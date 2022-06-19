@@ -23,7 +23,6 @@ awful.screen.connect_for_each_screen(function(s)
                     },
                     layout   = {
                         spacing = 2,
-                        
                         layout  = wibox.layout.fixed.horizontal
                     },
                     widget_template = {
