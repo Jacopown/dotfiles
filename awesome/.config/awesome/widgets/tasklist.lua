@@ -8,12 +8,13 @@ local wibox = require("wibox")
 awful.screen.connect_for_each_screen(function(s)
     s.tasklist = wibox.widget{
         widget = wibox.container.background,
+        --bg = "#ff0000",
         forced_height = dpi(40),
         {
             widget = wibox.container.margin,
             margins = dpi(5),
             {
-                layout = wibox.layout.fixed.horizontal,
+                layout = wibox.layout.align.horizontal,
                 awful.widget.tasklist {
                     screen  = s,
                     filter  = awful.widget.tasklist.filter.currenttags,
@@ -38,7 +39,7 @@ awful.screen.connect_for_each_screen(function(s)
                             {
                                 layout = wibox.layout.align.horizontal,
                                 widget  = wibox.container.margin,
-                                margins = 2,
+                                margins = 0,
                                 {
                                     id     = 'icon_role',
                                     widget = wibox.widget.imagebox,
