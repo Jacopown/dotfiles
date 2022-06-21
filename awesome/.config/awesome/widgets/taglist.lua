@@ -9,7 +9,6 @@ awful.screen.connect_for_each_screen(function(s)
     s.taglist = wibox.widget{
         widget = wibox.container.background,
         --bg = "#ff0000",
-        forced_height = dpi(40),
         {
             widget = wibox.container.margin,
             margins = dpi(5),
