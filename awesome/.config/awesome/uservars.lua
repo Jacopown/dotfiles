@@ -1,4 +1,6 @@
 local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -15,3 +17,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+
+uservars = {
+    
+}
