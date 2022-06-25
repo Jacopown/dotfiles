@@ -19,7 +19,7 @@ globalkeys = gears.table.join(
             history_path = awful.util.get_cache_dir() .. "/history_eval"
             }
         end,                                                                                {description = "lua execute prompt", group = "awesome"}),
-    awful.key({ modkey,}, "Return", function () awful.spawn(terminal) end,                  {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey,}, "Return", function () awful.spawn(uservars.terminal) end,                  {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey }, "space", function () awful.util.spawn("rofi -show drun") end,     {description = "run rofi", group = "launcher"}),
 
     -- Tags related keybindings
