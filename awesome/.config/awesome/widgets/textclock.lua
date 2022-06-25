@@ -20,7 +20,7 @@ textclock = wibox.widget{
                 margins = dpi(5),
                 {
                     layout = wibox.layout.align.horizontal,
-                    wibox.widget.textclock("%a %d %B, %H:%M")
+                    wibox.widget.textclock("%a %d %B %H:%M")
                 }
             }     
         }    
