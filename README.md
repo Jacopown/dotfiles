@@ -54,7 +54,7 @@ If you'd like to use another terminal emulator skip the alacritty package.
 First of all let's symlink my AwesomeWM config directory:
 
 ```bash
-stow ~/dotfiles/awesome
+cd ~/dofiles && stow awesome
 ```
 
 ### Wallpapers

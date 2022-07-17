@@ -16,7 +16,7 @@ loadkeys it
 
 ### Network connection
 
-If you use an internet cable you're probably already connected, you can check it by running
+If you use an ethernet cable you're probably already connected, you can check it by running
 
 ```bash
 ping www.google.com
