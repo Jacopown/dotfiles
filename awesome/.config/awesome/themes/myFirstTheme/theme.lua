@@ -24,13 +24,30 @@ theme.fg_normal         = "#ebdbb2"
 theme.fg_focus          = "#d5c4a1"
 theme.fg_urgent         = "#ffffff"
 theme.fg_minimize       = "#ffffff"
-theme.taglist_fg_focus  = "#d65d0e"
 
-theme.useless_gap   = dpi(5)
+theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(2)
 theme.border_normal = "#282828"
 theme.border_focus  = "#d65d0e"
 theme.border_marked = "#cc241d"
+
+-------------------
+-- Taglist Theme --
+-------------------
+
+theme.taglist_fg_focus = "#cc241d"
+theme.taglist_bg_focus = "#928374"
+theme.taglist_bg_occupied = "#504945"
+theme.taglist_bg_empty = "#504945"
+
+--------------
+-- Tasklist --
+--------------
+
+-- theme.taglist_fg_normal 
+theme.tasklist_bg_normal = "#504945"
+theme.tasklist_bg_focus = "#928374"
+theme.tasklist_disable_task_name = true
 
 -- There are other variable sets
 -- overriding the default one when
@@ -44,15 +61,6 @@ theme.border_marked = "#cc241d"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
 
 -- Variables set for theming notifications:
 -- notification_font

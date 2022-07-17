@@ -1,0 +1,5 @@
+require("widgets.mainmenu")
+require("widgets.taglist")
+require("widgets.tasklist")
+require("widgets.textclock")
+require("widgets.layoutbox")
