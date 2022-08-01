@@ -20,5 +20,5 @@ brew analytics off
 echo "Updating homebrew..."
 brew update
 
-echo "Installing Git..."
-brew install git
+# Remove "Last Login" message when a terminal is opened
+touch ~/.hushlogin
