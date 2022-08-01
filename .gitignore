@@ -1,7 +1,4 @@
 .DS_Store
-old_init.vim
-/nvim/plugin/
 zsh/.config/zsh/plugins/
 .zsh_history
-todo_nvim.md
 
