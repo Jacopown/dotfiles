@@ -1,0 +1,1 @@
+PROMPT='%B%F{red}[%f%b%n%B%F{red}]%f%b %F{blue}ﱮ %~/%f %(?.%F{green}%f.%F{red}%f) '
