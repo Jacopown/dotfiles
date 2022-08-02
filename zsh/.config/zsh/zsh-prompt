@@ -20,13 +20,14 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
         # If instead you want to show the marker only if there are untracked
         # files in $PWD, use:
         #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-        hook_com[staged]+='!' # signify new files with a bang
+        hook_com[staged]+=' ' # signify new files with a bang
     fi
 }
 
 zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
-zstyle ':vcs_info:git:*' formats " %F{blue}(%f%F{red}%m%u%c%f%F{yellow}%f%F{magenta}%b%f%F{blue})%f"
+zstyle ':vcs_info:*' unstagedstr ''
+zstyle ':vcs_info:*' stagedstr ''
+zstyle ':vcs_info:git:*' formats " %F{blue}(%f%F{red}%u%f%F{yellow}%c%f%f%F{yellow}%f%F{magenta}%b%f%F{blue})%f"
 
 PROMPT='%B%F{red}[%f%b%n%B%F{red}]%f%b %F{blue}ﱮ %~/%f %(?.%F{green}%f.%F{red}%f) '
 PROMPT+="\$vcs_info_msg_0_ "
