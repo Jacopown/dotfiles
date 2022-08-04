@@ -15,4 +15,9 @@ zsh_add_file "zsh-prompt"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "zsh-users/zsh-history-substring-search"
+
+# Now pressing  or  after u typed a command will cycle throught history of that command only
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
