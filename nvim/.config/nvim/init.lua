@@ -1,5 +1,5 @@
-require 'colorscheme'
 require 'keymaps'
 require 'plugins'
 require 'settings'
+require 'colorscheme'
 require 'lsp'

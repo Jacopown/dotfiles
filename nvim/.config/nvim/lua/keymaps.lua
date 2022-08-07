@@ -1,12 +1,11 @@
-local opts = { noremap = true, silent = true }
-
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
+-- Silent keymap option
+local opts = { silent = true }
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
@@ -35,15 +34,20 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "qb", ":Bdelete<CR>", opts)
+keymap("n", "<S-q>", ":Bdelete<CR>", opts)
+
+-- Clear highlights
+keymap("n", "<leader>h", ":nohlsearch<CR>", opts)
+
+keymap("v", "p", '"_dP', opts)
 
 -----------------
 -- INSERT MODE --
 -----------------
 
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
 keymap("i", "kj", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts)
 
 -----------------
 -- VISUAL MODE --
@@ -52,6 +56,8 @@ keymap("i", "kj", "<ESC>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Better paste
 keymap("v", "p", '"_dP', opts)
 
 ------------------
@@ -62,13 +68,18 @@ keymap("v", "p", '"_dP', opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
----------------
--- TELESCOPE --
----------------
+-- NvimTree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
-keymap("n", "ff", ":Telescope find_files<CR>", opts)
-keymap("n", "fh", ":Telescope oldfiles<CR>", opts)
-keymap("n", "fg", ":Telescope live_grep<CR>", opts)
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
--- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+-- Git
+keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+
+-- Comment
+keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')

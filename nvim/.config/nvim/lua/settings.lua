@@ -1,71 +1,48 @@
-local cmd = vim.cmd
 local options = {
-
-    -- General --
-
-	backspace = 'indent,eol,start',         -- Without this	on some times backspace did not work correctly.
-    backup = false,                         -- Enable backup file creation.
-	clipboard = 'unnamedplus',              -- Enables neovim to access the system clipboard.
-    cmdheight = 2,                          -- Sets height of command line.
-    completeopt = {'menuone', 'noselect'},  -- Settings for cmd autocompletion menu.
-    conceallevel = 0,                       -- For better readability in markdown.
-	cursorline = false,                      -- Enable cursor line.
-	errorbells = true,						-- Enable bell on error.
-    fileencoding = 'utf-8',                 -- The file encoding.
-    -- guifont = '',                           -- Still not choosen.
-	hidden = true,                          -- You’re telling Neovim that you can have unsaved worked that’s not displayed on your screen
-	magic = true,							-- Regex now works better
-	mouse = 'a',                            -- Enable mouse in all modes.
-    pumheight = 10,                         -- Pop Up menu height.
-    scrolloff = 8,                          -- Number of lines always on top and bottom of the cursor when scrolling.
-	showmatch = false,		                -- When closing a bracket nvim shows for a moment his opening bracket.
-    showmode = false,                       -- Enable showing in the bottom left, the current mode.
-    sidescrolloff = 8,                      -- Same as scrolloff for lateral scrolling.
-    signcolumn = 'yes',                     -- Enable a column, to the left of line numbers, for signs.
-    splitbelow = true,                      -- Force all horizontal splits to go below current window.
-    splitright = true,                      -- Force all vertical splits to go to the right of current window.
-    swapfile = false,                       -- Enable swap file.
-	termguicolors = true,                   -- Enables 24-bit RGB color in the TUI
-	title = false,							-- Enable title
-    timeoutlen = 1000,                      -- Milliseconds to wait for a mapped sequence to complete.
-    undofile = true,                        -- Enable persistent undo.
-    updatetime = 300,                       -- Faster completion.
-	visualbell = true,						-- Use visual bell instead of beeping
-    wrap = true,                           -- Enable too long lines to go newline  instead of going outside the view.
-    writebackup = false,                    -- Enable backup file before overwriting a file.
-
-    -- Numbers --
-
-	number = true,                          -- Enable line numbers
-	numberwidth = 4,                        -- Sets width of line numbers section
-	relativenumber = false,                 -- Enable numbers to count up and down from the current line and not from the beginning
-	ruler = false,                          -- Enable display of line and column
-
-    -- Indent --
-
-	autoindent = true,                      -- Use same indenting on new lines
-	expandtab = true,                       -- Enable conversion of tabs to spaces.
-	shiftround = true,                      -- Round indent to multiple of 'shiftwidth'
-    shiftwidth = 4,                         -- Number of spaces for each indentation.
-	-- smartindent = true,                     -- Enabel smart autoindenting.
-	smarttab = true,
-    softtabstop = 4,
-	tabstop = 4,                            -- Number of spaces a tab.
-	-- textwidth = 80,                         -- Text width maximum chars before wrapping.
-
-    -- Search --
-
-	hlsearch = true,						-- Enable search highlight.
-	ignorecase = true,						-- Enable search case insensitive.
-	incsearch = false,						-- Enable incremental search.
-    smartcase = true,                       -- Override the 'ignorecase' option if searching with an uppercase character.
-
+	backup = false,                           -- creates a backup file
+	clipboard = "unnamedplus",                -- allows neovim to access the system clipboard
+	cmdheight = 1,                            -- more space in the neovim command line for displaying messages
+	completeopt = { "menuone", "noselect" },  -- mostly just for cmp
+	conceallevel = 0,                         -- so that `` is visible in markdown files
+	cursorline = true,                        -- highlight the current line
+	fileencoding = "utf-8",                   -- the encoding written to a file
+	hlsearch = true ,                         -- highlight all matches on previous search pattern
+	ignorecase = true,                        -- ignore case in search patterns
+	mouse = "a",                              -- allow the mouse to be used in neovim
+	pumheight = 10,                           -- pop up menu height
+	showmode = false,                         -- we don't need to see things like -- INSERT -- anymore
+	showtabline = 0,                          -- always show tabs
+	smartcase = true ,                        -- smart case
+	smartindent = true,                       -- make indenting smarter again
+	splitbelow = true,                        -- force all horizontal splits to go below current window
+	splitright = true,                        -- force all vertical splits to go to the right of current window
+	swapfile = false,                         -- creates a swapfile
+	termguicolors = true,                     -- set term gui colors (most terminals support this)
+	timeoutlen = 1000,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+	undofile = true,                          -- enable persistent undo
+	updatetime = 300,                         -- faster completion (4000ms default)
+	writebackup = false,                      -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+	expandtab = true,                         -- convert tabs to spaces
+	shiftwidth = 2,                           -- the number of spaces inserted for each indentation
+	tabstop = 2,                              -- insert 2 spaces for a tab
+	number = true,                            -- set numbered lines
+	laststatus = 3,
+	showcmd = false,
+	ruler = false,
+	numberwidth = 4,                        		-- set number column width to 2 {default 4}
+	signcolumn = "yes",                     		-- always show the sign column, otherwise it would shift the text each time
+	wrap = false,                           		-- display lines as one long line
+	scrolloff = 8,                          		-- is one of my fav
+	sidescrolloff = 8,
+	--guifont = "monospace:h17"              		-- the font used in graphical neovim applications
 }
 
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
--- Commands --
-cmd 'set iskeyword+=-'                      -- Now words connected with '-' are considered as a single word.
-cmd 'set whichwrap +=<,>,[,],h,l'           -- Now moving left or right at the end of a line moves you up and down.
+vim.opt.fillchars.eob=" "
+vim.opt.shortmess:append "c"
+vim.opt.whichwrap:append("<,>,[,],h,l")
+vim.opt.iskeyword:append("-")
+vim.cmd([[let g:python3_host_prog = "/opt/homebrew/Caskroom/miniconda/base/envs/nvim/bin/python"]])

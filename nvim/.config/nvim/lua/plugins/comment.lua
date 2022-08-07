@@ -1,6 +1,5 @@
 local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
-    vim.notify('There was a problem while loading Comment plugin')
   return
 end
 
