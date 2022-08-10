@@ -7,4 +7,7 @@ end
 npairs.setup {
   check_ts = true, -- treesitter integration
   disable_filetype = { "TelescopePrompt" },
+  fast_wrap = {
+    map = '<C-e>',
+  },
 }
