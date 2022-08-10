@@ -17,6 +17,7 @@ nvim_tree.setup({
 			list = {
 				{ key = "l", action = "edit", action_cb = edit_or_open },
 				{ key = "h", action = "close_node" },
+        { key = "v", action = "vsplit_preview", action_cb = vsplit_preview },
 			},
 		},
 	},
