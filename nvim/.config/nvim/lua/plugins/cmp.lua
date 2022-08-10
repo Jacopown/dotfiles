@@ -8,6 +8,16 @@ if not snip_status_ok then
 	return
 end
 
+local autopairs_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not autopairs_status_ok then
+	return
+end
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -44,6 +54,17 @@ local kind_icons = {
 }
 
 cmp.setup({
+	enabled = function()
+		-- disable completion in comments
+		local context = require("cmp.config.context")
+		-- keep command mode completion enabled when cursor is in a comment
+		if vim.api.nvim_get_mode().mode == "c" then
+			return true
+		else
+			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+		end
+	end,
+
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -92,17 +113,24 @@ cmp.setup({
 			"s",
 		}),
 	}),
+
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		fields = { "abbr", "kind", "menu" },
 		format = function(entry, vim_item)
-			vim_item.kind = kind_icons[vim_item.kind]
+			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 			vim_item.menu = ({
+				-- nvim_lsp = "[LSP]",
+				-- nvim_lua = "[LUA]",
+				-- luasnip = "[SNIP]",
+				-- buffer = "[BUFFER]",
+				-- path = "[PATH]",
+				-- latex_symbols = "[LaTeX]",
 				nvim_lsp = "",
 				nvim_lua = "",
 				luasnip = "",
 				buffer = "",
 				path = "",
-				emoji = "",
+				latex_symbols = "",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -113,8 +141,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
-    { name = "emoji" },
-    { name = "latex_symbols" },  
+		{ name = "latex_symbols" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
