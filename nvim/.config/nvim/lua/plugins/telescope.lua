@@ -3,13 +3,10 @@ if not status_ok then
   return
 end
 
-telescope.load_extension('fzf')
-
 local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
@@ -25,3 +22,5 @@ telescope.setup {
     },
   },
 }
+
+telescope.load_extension('fzf')
