@@ -43,7 +43,10 @@ return packer.startup(function(use)
   use { "kyazdani42/nvim-tree.lua", commit = "1685484738377927c4a97a90a4dc031e54c29997" } -- File explorer
   use { "akinsho/bufferline.nvim", commit = "21aeb945db6a1c037e42ab6a6f05e357ea623a7b" } -- Shows opened buffers
   use { "nvim-lualine/lualine.nvim", commit = "f50ce0f9f69ce4db1d1efa8c7f7f44d90bb7916a" } -- Info Bar
-  use { 'goolord/alpha-nvim', commit = "d688f46090a582be8f9d7b70b4cf999b780e993d" } -- Start Menu
+  use { 'goolord/alpha-nvim', commit = "d688f46090a582be8f9d7b70b4cf999b780e993d",
+    config = function()
+      require("plugins/alpha")
+    end} -- Start Menu
 
   -- Treesitter and related --
   use { "nvim-treesitter/nvim-treesitter", commit = "4e371452e0100989f3489eac8cd20b336ebd403b",
