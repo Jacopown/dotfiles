@@ -26,4 +26,7 @@ nvim_tree.setup({
 			quit_on_open = false,
 		},
 	},
+  diagnostics ={
+    enable = true,
+  },
 })
