@@ -75,7 +75,7 @@ return packer.startup(function(use)
 	use({ "akinsho/toggleterm.nvim", commit = "53c9d50add7c0afd563ed7a6e221422a693f625b" })
 	use({ "lewis6991/gitsigns.nvim", commit = "9c3ca027661136a618c82275427746e481c84a4e" })
 	use({ "norcalli/nvim-colorizer.lua", commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" })
-  use { "ahmedkhalf/project.nvim" }
+  use { "ahmedkhalf/project.nvim", commit = "090bb11ee7eb76ebb9d0be1c6060eac4f69a240f"}
 
 	-- cmp plugins
 	use({ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" })
