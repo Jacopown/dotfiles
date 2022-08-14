@@ -1,8 +1,8 @@
 local M = {}
 
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_cmp_ok then
-	return
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_ok then
+	vim.notify("There was a problem while requiring cmp-nvim-lsp plugin")
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -77,9 +77,9 @@ M.on_attach = function(client, bufnr)
 	end
 
 	lsp_keymaps(bufnr)
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
-		return
+	local illuminate_ok, illuminate = pcall(require, "illuminate")
+	if not illuminate_ok then
+		vim.notify("There was a problem while requiring illuminate plugin")
 	end
 	illuminate.on_attach(client)
 end

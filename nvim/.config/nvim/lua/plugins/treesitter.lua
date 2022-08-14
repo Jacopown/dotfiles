@@ -1,6 +1,6 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-	return
+local treesitter_ok, configs = pcall(require, "nvim-treesitter.configs")
+if not treesitter_ok then
+	vim.notify("There was a problem while requiring treesitter plugin")
 end
 
 configs.setup({
@@ -11,5 +11,5 @@ configs.setup({
 		disable = { "css" }, -- list of language that will be disabled
 	},
 	indent = { enable = true, disable = { "python", "css" } },
-  context_commentstring = { enable = true, enable_autocmd = false},
+	context_commentstring = { enable = true, enable_autocmd = false },
 })

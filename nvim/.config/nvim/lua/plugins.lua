@@ -18,9 +18,9 @@ vim.cmd([[
 ]])
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
+local packer_ok, packer = pcall(require, "packer")
+if not packer_ok then
+	vim.notify("There was a problem while requiring packer")
 end
 
 -- Have packer use a popup window
@@ -75,7 +75,7 @@ return packer.startup(function(use)
 	use({ "akinsho/toggleterm.nvim", commit = "53c9d50add7c0afd563ed7a6e221422a693f625b" })
 	use({ "lewis6991/gitsigns.nvim", commit = "9c3ca027661136a618c82275427746e481c84a4e" })
 	use({ "NvChad/nvim-colorizer.lua", commit = "3e7c1e0e8048d37d8e5b711d9fa005d25b64d54a" })
-  use { "ahmedkhalf/project.nvim", commit = "090bb11ee7eb76ebb9d0be1c6060eac4f69a240f"}
+	use({ "ahmedkhalf/project.nvim", commit = "090bb11ee7eb76ebb9d0be1c6060eac4f69a240f" })
 
 	-- cmp plugins
 	use({ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" })
@@ -85,7 +85,7 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" })
 	use({ "hrsh7th/cmp-calc", commit = "f7efc20768603bd9f9ae0ed073b1c129f63eb312" })
 	use({ "hrsh7th/cmp-emoji", commit = "19075c36d5820253d32e2478b6aaf3734aeaafa0" })
-  use({ "hrsh7th/cmp-nvim-lsp-signature-help", commit = "57c4db7d3a663bd31ef60c4b5ed32683301247e9" })
+	use({ "hrsh7th/cmp-nvim-lsp-signature-help", commit = "57c4db7d3a663bd31ef60c4b5ed32683301247e9" })
 	use({ "kdheepak/cmp-latex-symbols", commit = "46e7627afa8c8ff57158d1c29d721d8efebbc39f" })
 	use({ "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }) -- snippet completions
 	use({ "hrsh7th/nvim-cmp", commit = "706371f1300e7c0acb98b346f80dad2dd9b5f679" }) -- The completion plugin

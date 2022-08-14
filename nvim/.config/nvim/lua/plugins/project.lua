@@ -1,6 +1,6 @@
-local status_ok, project = pcall(require, "project_nvim")
-if not status_ok then
-	return
+local project_ok, project = pcall(require, "project_nvim")
+if not project_ok then
+	vim.notify("There was a problem while requiring project plugin")
 end
 project.setup({
 

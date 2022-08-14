@@ -1,22 +1,19 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
+local cmp_ok, cmp = pcall(require, "cmp")
+if not cmp_ok then
+	vim.notify("There was a problem while requiring cmp plugin")
 end
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
+local luasnip_ok, luasnip = pcall(require, "luasnip")
+if not luasnip_ok then
+	vim.notify("There was a problem while requiring luasnip plugin")
 end
 
-local autopairs_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
-if not autopairs_status_ok then
-	return
+local autopairs_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not autopairs_ok then
+	vim.notify("There was a problem while requiring autopairs completion cmp plugin")
 end
 
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -125,9 +122,9 @@ cmp.setup({
 				luasnip = "[SNIP]",
 				path = "[PATH]",
 				latex_symbols = "[LaTeX]",
-        calc = "[CALC]",
-        emoji = "",
-        nvim_lsp_signature_help = "",
+				calc = "[CALC]",
+				emoji = "",
+				nvim_lsp_signature_help = "",
 				-- nvim_lsp = "",
 				-- nvim_lua = "",
 				-- luasnip = "",
@@ -145,9 +142,9 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "path" },
 		{ name = "latex_symbols" },
-    { name = "calc" },
-    { name = "emoji" },
-    { name = "nvim_lsp_signature_help" },
+		{ name = "calc" },
+		{ name = "emoji" },
+		{ name = "nvim_lsp_signature_help" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
