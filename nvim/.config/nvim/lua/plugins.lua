@@ -76,7 +76,12 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim", commit = "9c3ca027661136a618c82275427746e481c84a4e" })
 	use({ "NvChad/nvim-colorizer.lua", commit = "3e7c1e0e8048d37d8e5b711d9fa005d25b64d54a" })
 	use({ "ahmedkhalf/project.nvim", commit = "090bb11ee7eb76ebb9d0be1c6060eac4f69a240f" })
-
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 	-- cmp plugins
 	use({ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" })
 	use({ "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }) -- buffer completions
