@@ -7,6 +7,7 @@ local servers = {
 	"sumneko_lua",
 	"pyright",
 	"bashls",
+  "sqls"
 }
 
 lsp_installer.setup()
