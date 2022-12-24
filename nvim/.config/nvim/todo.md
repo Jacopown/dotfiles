@@ -1,6 +1,0 @@
-- [ ] patch nerd font for vscode devicons 
-- [ ] create markdown preview plugin
-- [ ] whichkey
-- [ ] test mason.nvim
-- [ ] test lsp zero
-- [ ] test neo-tree
