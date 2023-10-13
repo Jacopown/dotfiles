@@ -36,14 +36,6 @@ wifi-menu
 
 In my experience it's always easier to use ethernet connection or usb tethering form your phone and setup wifi connection after the installation.
 
-### Time
-
-Set the system clock to update through internet
-
-```bash
-timedatectl set-ntp true
-```
-
 ### Mirrors
 <!-- TODO move mirrors in the right place -->
 Now we'll tell our package manager the best mirrors to use
@@ -286,14 +278,14 @@ and change 'it' with your keymap. Now we've set our locales.
 Run
 
 ```bash
-nvim /etc/hostname
+vim /etc/hostname
 ```
 
 write the hostname for your machine on the first line than save and exit.
 Run
 
 ```bash
-nvim /etc/hosts
+vim /etc/hosts
 ```
 
 and on new line write
@@ -394,10 +386,10 @@ and create the grub config file
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-If the output doesn't show that grub has found the windows partitio or if it says that os-prober had some problems do the following steps
+If the output doesn't show that grub has found the windows partition or if it says that os-prober had some problems do the following steps
 
 ```bash
-nvim /etc/default/grub
+vim /etc/default/grub
 ```
 
 and add or uncomment
@@ -407,6 +399,10 @@ GRUB_DISABLE_OS_PROBER=false
 ```
 
 save and exit and run
+```
+os-prober
+```
+and than run
 
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -456,7 +452,7 @@ Change 'username' with yours. Set the password for the new user.
 passwd username
 ```
 
-And now modify wheel group options uncommenting the line "%wheel ALL=(ALL)ALL"
+And now modify wheel group options uncommenting the line "%wheel ALL=(ALL:ALL)ALL"
 
 ```bash
 EDITOR=vim visudo
