@@ -496,7 +496,11 @@ for amd graphic cards
 sudo pacman -S nvidia nvidia-utils
 ```
 
-for nvidia graphic cards
+for nvidia graphic cards, and than remove kms from the HOOKS array in /etc/mkinitcpio.conf and regenerate the initramfs with 
+
+```
+mkinitcpio -P
+```
 
 ```bash
 sudo pacman -S xf86-video-vmware
