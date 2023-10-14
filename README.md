@@ -43,6 +43,18 @@ rm -rf ~/tmp
 
 ...and let's install everything we need:
 
+```
+paru -S xorg-server awesome-git lightdm lightdm-gtk-greeter
+```
+than reboot to make lightdm service available and than run
+```
+sudo systemctl enable lightdm.service
+```
+now set the greeter-session parameter in `/etc/lightdm/lightdm.conf` file as `lightdm-gtk-greeter` and rebooting again should show the display manager on boot.
+```
+paru -S openssh
+```
+
 ```bash
 paru -S xorg xorg-xinit awesome alacritty nitrogen wget rofi lxsession lxappearance qt5ct brave-bin 
 ```
@@ -83,7 +95,7 @@ In this setup I used Alacritty with zsh, feel free to install averything you pre
 The last step is to symlink my rofi config files:
 
 ```bash
-stow ~/dotfiles/rofi/
+stow -t ~/ ~/dotfiles/rofi/
 ```
 
 ## Alacritty
