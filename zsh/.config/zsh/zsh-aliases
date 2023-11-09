@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-alias ls='ls --color=auto'
-alias l='ls -la'
-alias yay="paru -Sy"
-alias yeet="paru -Rs"
-
