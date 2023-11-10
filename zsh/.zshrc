@@ -17,3 +17,5 @@ compinit
 
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
+
+alias dot="cd ~/Repo/dotfiles/ && la"
