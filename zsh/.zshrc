@@ -1,5 +1,8 @@
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+
+plug "$HOME/.config/zsh/exports.zsh"
+
 plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
