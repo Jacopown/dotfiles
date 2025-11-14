@@ -1,0 +1,42 @@
+#! /usr/bin/env bash
+
+dry_run=""
+
+if [[ $1 == "--dry" ]]; then
+  dry_run="echo "
+fi
+
+if [[ -z "$INSTALL_CMD" ]]; then
+  echo "Error: INSTALL_CMD is not set or is empty." >&2
+  exit 1
+fi
+
+if [[ -z "$REPO_DIR" ]]; then
+  echo "Error: REPO_DIR is not set or is empty." >&2
+  exit 1
+fi
+
+if ! command -v "mamba" &> /dev/null; then
+  if [[ "$dry_run" == "echo " ]]; then
+      echo "\"${SHELL}\" <(curl -L micro.mamba.pm/install.sh)"
+  else
+      "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+  fi
+fi
+
+${dry_run}rm $HOME/.zshrc
+${dry_run}ln -s $HOME/$REPO_DIR/dotfiles/zsh/.zshrc $HOME
+
+${dry_run}rm $HOME/.p10k.zsh
+${dry_run}ln -s $HOME/$REPO_DIR/dotfiles/zsh/.p10k.zsh $HOME
+
+DEST_FOLDER=$HOME/$REPO_DIR/tmux-sessionizer
+if [ -d "$DEST_FOLDER" ]; then
+  ${dry_run}git -C $DEST_FOLDER pull
+else
+  ${dry_run}git clone git@github.com:ThePrimeagen/tmux-sessionizer.git 
+fi
+${dry_run}sudo rm /usr/local/bin/tmux-sessionizer
+${dry_run}sudo ln -s $HOME/$REPO_DIR/tmux-sessionizer/tmux-sessionizer /usr/local/bin/
+
+${dry_run}exec zsh
