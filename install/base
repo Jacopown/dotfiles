@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+dry_run=""
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home"
+    echo "using ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+fi
+
+if [[ $1 == "--dry" ]]; then
+    dry_run="echo "
+fi
+
+if [[ -n "$INSTALL_CMD" ]]; then
+
+    ${dry_run}"${INSTALL_CMD} git fzf tmux"
+
+else
+    echo "Error: INSTALL_CMD is not set or is empty." >&2
+    exit 1
+fi
