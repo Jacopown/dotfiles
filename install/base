@@ -1,22 +1,35 @@
-#! /usr/bin/env bash
+#! /usr/bin/env zsh
 
-dry_run=""
-
-if [ -z "$XDG_CONFIG_HOME" ]; then
-    echo "no xdg config home"
-    echo "using ~/.config"
-    XDG_CONFIG_HOME=$HOME/.config
-fi
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+dry_run="0"
 
 if [[ $1 == "--dry" ]]; then
-    dry_run="echo "
+    dry_run="1"
 fi
 
-if [[ -n "$INSTALL_CMD" ]]; then
-
-    ${dry_run}"${INSTALL_CMD} git fzf tmux"
-
-else
-    echo "Error: INSTALL_CMD is not set or is empty." >&2
-    exit 1
+#TODO: decide how to handle this var
+if [[ -z "$INSTALL_CMD" ]]; then
+  echo "Error: INSTALL_CMD is not set or is empty." >&2
+  exit 1
 fi
+
+log() {
+    if [[ $dry_run == "1" ]]; then
+        echo "[DRY_RUN]: $1"
+    else
+        echo "$1"
+    fi
+}
+
+COMMANDS_LIST=(
+    "git fzf tmux --noconfirm --needed"
+    "firefox telegram-desktop vesktop --noconfirm --needed"
+    "noto-fonts noto-fonts-emoji noto-fonts-cjk --noconfirm --needed" # for broken guis in discord and safari
+)
+
+for i in "${COMMANDS_LIST[@]}"; do
+    log "running command: ${INSTALL_CMD} ${i}"
+    if [[ $dry_run == "0" ]]; then
+        eval "${INSTALL_CMD} ${i}"
+    fi
+done
