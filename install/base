@@ -22,6 +22,7 @@ log() {
 }
 
 COMMANDS_LIST=(
+    "npm --noconfirm --needed" # nedded for installing bashls
     "git fzf tmux --noconfirm --needed"
     "firefox telegram-desktop vesktop --noconfirm --needed"
     "noto-fonts noto-fonts-emoji noto-fonts-cjk --noconfirm --needed" # for broken guis in discord and safari
