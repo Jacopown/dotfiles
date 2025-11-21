@@ -1,5 +1,5 @@
 #! /usr/bin/env zsh
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+script_dir="$( cd "$( dirname "${(%):-%x}" )" &> /dev/null && pwd )"
 dry_run="0"
 
 if [[ $1 == "--dry" ]]; then
