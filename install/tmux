@@ -1,0 +1,37 @@
+#! /usr/bin/env zsh
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+dry_run="0"
+
+if [[ $1 == "--dry" ]]; then
+    dry_run="1"
+fi
+
+log() {
+    if [[ $dry_run == "1" ]]; then
+        echo "[DRY_RUN]: $1"
+    else
+        echo "$1"
+    fi
+}
+
+if ! command -v "mamba" &> /dev/null; then
+  log "running command: ${SHELL} <(curl -L micro.mamba.pm/install.sh)"
+  if [[ $dry_run == "0" ]]; then
+    "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+  fi
+fi
+
+COMMANDS_LIST=(
+    "rm $HOME/.tmux.conf"
+    "ln -s $script_dir/../tmux/.tmux.conf $HOME"
+    "exec zsh"
+)
+
+for i in "${COMMANDS_LIST[@]}"; do
+  log "running command: ${i}"
+  if [[ $dry_run == "0" ]]; then
+    eval "${i}"
+  fi
+done
+
+

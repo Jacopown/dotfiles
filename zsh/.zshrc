@@ -49,7 +49,6 @@ unsetopt autocd beep
 
 export VISUAL=nvim
 export EDITOR=nvim
-export TERM="tmux-256color"
 
 export BROWSER="firefox"
 
