@@ -19,7 +19,7 @@ zinit light zsh-users/zsh-completions #Before compinit
 autoload -U compinit && compinit
 zinit cdreplay -q
 zstyle ':completion:*' matcher 'm:{a-z}={A-Za-Z}'
-eval "$(dircolors -b)"
+# eval "$(dircolors -b)"
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
@@ -68,5 +68,9 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 zinit light zsh-users/zsh-syntax-highlighting #Must be the last to be sourced
