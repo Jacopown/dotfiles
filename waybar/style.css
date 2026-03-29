@@ -40,6 +40,7 @@ window#waybar {
 #cpu,
 #memory,
 #network,
+#bluetooth,
 #pulseaudio,
 #custom-date,
 #clock,
@@ -68,7 +69,21 @@ window#waybar {
     color: @sky;
 }
 
-/* 2. DATE & TIME */
+/* 2. NETWORK & BLUETOOTH */
+#network {
+    margin-right: 2px;
+    padding-right: 10px;
+    border-radius: 1rem 0 0 1rem;
+    color: @sapphire;
+}
+#bluetooth {
+    margin-left: 0;
+    padding-left: 10px;
+    border-radius: 0 1rem 1rem 0;
+    color: @blue;
+}
+
+/* 3. DATE & TIME */
 #custom-date {
     margin-right: 2px; /* The "transparent separator" */
     padding-right: 10px;
@@ -82,7 +97,7 @@ window#waybar {
     color: @blue;
 }
 
-/* 3. LOCK & POWER */
+/* 4. LOCK & POWER */
 #custom-lock {
     margin-right: 2px; /* The "transparent separator" */
     padding: 0;
@@ -107,10 +122,6 @@ window#waybar {
   padding: 0 20px;
 }
 
-#network {
-  color: @sapphire;
-}
-
 #pulseaudio {
   color: @maroon;
 }
@@ -124,6 +135,7 @@ window#waybar {
 #cpu:hover,
 #memory:hover,
 #network:hover,
+#bluetooth:hover,
 #pulseaudio:hover,
 #custom-date:hover,
 #clock:hover,
