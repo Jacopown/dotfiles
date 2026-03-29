@@ -49,12 +49,7 @@ unsetopt autocd beep
 
 export VISUAL=nvim
 export EDITOR=nvim
-
 export BROWSER="firefox"
-
-alias ls="ls --color=auto"
-alias ll="ls -la"
-alias l="ls -l"
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba shell init' !!
@@ -68,5 +63,13 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+
+alias ls="ls --color=auto"
+alias ll="ls -la"
+alias l="ls -l"
+alias vim="nvim"
+alias mamba="micromamba"
+
+source /usr/share/nvm/init-nvm.sh
 
 zinit light zsh-users/zsh-syntax-highlighting #Must be the last to be sourced
