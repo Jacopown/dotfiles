@@ -1,0 +1,101 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 42,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 0,
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/music"],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "network",
+        "custom/date",
+        "clock",
+        "tray",
+        "custom/lock",
+        "custom/power"
+    ],
+
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "format": "{icon}",
+         "format-icons": {
+             "default": "󰄰",
+             "active": "󰄯",
+             "urgent": "󰀦"
+         }
+     },
+
+    "custom/music": {
+        "format": "󰎆  {}",
+        "escape": true,
+        "interval": 2,
+        "exec": "playerctl metadata --format='{{ title }}' || echo 'No Media'",
+        "on-click": "playerctl play-pause",
+        "max-length": 40
+    },
+
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "󰘚 {used:0.1f}GB",
+        "tooltip-format": "Used: {used:0.1f}GB / Total: {total:0.1f}GB"
+    },
+
+    "network": {
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰲜",
+        "tooltip-format": "{ifname} via {gwaddr} 󰈀",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) 󰖩",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pulsecontrol"
+    },
+
+    "custom/date": {
+        "format": "󰃭 {}",
+        "interval": 3600,
+        "exec": "date +'%d %b'",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "clock": {
+        "timezone": "Europe/Rome",
+        "format": "󰥔 {:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+
+    "custom/lock": {
+        "format": "󰌾",
+        "on-click": "loginctl lock-session",
+        "tooltip": false
+    },
+
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "shutdown now",
+        "tooltip": false
+    }
+}

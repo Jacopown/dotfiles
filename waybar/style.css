@@ -1,0 +1,133 @@
+@import "frappe.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+#workspaces {
+  background-color: @surface0;
+  border-radius: 1rem;
+  margin: 5px 4px;
+  padding: 0 10px;
+}
+
+#workspaces button {
+  color: @mauve;
+  padding: 0 5px;
+  font-size: 16px;
+}
+
+#workspaces button.active {
+  color: @green;
+}
+
+#workspaces button:hover {
+  background: @surface1;
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+/* Base module style */
+#custom-music,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-date,
+#clock,
+#tray,
+#custom-lock,
+#custom-power {
+  background-color: @surface0;
+  padding: 0 15px;
+  margin: 5px 4px;
+  border-radius: 1rem;
+}
+
+/* --- GROUPED PILLS WITH SEPARATORS --- */
+
+/* 1. CPU & RAM */
+#cpu {
+    margin-right: 2px; /* The "transparent separator" */
+    padding-right: 10px;
+    border-radius: 1rem 0 0 1rem;
+    color: @teal;
+}
+#memory {
+    margin-left: 0;
+    padding-left: 10px;
+    border-radius: 0 1rem 1rem 0;
+    color: @sky;
+}
+
+/* 2. DATE & TIME */
+#custom-date {
+    margin-right: 2px; /* The "transparent separator" */
+    padding-right: 10px;
+    border-radius: 1rem 0 0 1rem;
+    color: @blue;
+}
+#clock {
+    margin-left: 0;
+    padding-left: 10px;
+    border-radius: 0 1rem 1rem 0;
+    color: @blue;
+}
+
+/* 3. LOCK & POWER */
+#custom-lock {
+    margin-right: 2px; /* The "transparent separator" */
+    padding: 0;
+    min-width: 45px;
+    border-radius: 1rem 0 0 1rem;
+    color: @lavender;
+    font-size: 18px;
+}
+#custom-power {
+    margin-left: 0;
+    padding: 0;
+    min-width: 45px;
+    border-radius: 0 1rem 1rem 0;
+    color: @red;
+    font-size: 18px;
+}
+
+/* --- INDIVIDUAL PILLS --- */
+
+#custom-music {
+  color: @mauve;
+  padding: 0 20px;
+}
+
+#network {
+  color: @sapphire;
+}
+
+#pulseaudio {
+  color: @maroon;
+}
+
+#tray {
+  padding: 0 10px;
+}
+
+/* Hover effects */
+#custom-music:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-date:hover,
+#clock:hover,
+#custom-lock:hover,
+#custom-power:hover {
+  background-color: @surface1;
+}
