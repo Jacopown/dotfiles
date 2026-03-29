@@ -1,0 +1,79 @@
+@import "catppuccin-frappe"
+
+* {
+    background-color: transparent;
+    text-color:       @text;
+    font:            "JetBrains Mono Nerd Font 10";
+    accent-color:    @sky;
+}
+
+window {
+    location:         center;
+    anchor:           center;
+    width:            600px;
+    border:           1px;
+    border-radius:    12px;
+    border-color:     @accent-color;
+    background-color: @base;
+    padding:          20px;
+}
+
+mainbox {
+    spacing:          10px;
+    children:         [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing:          10px;
+    margin:           0px 0px 10px 0px;
+    children:         [ "prompt", "entry" ];
+}
+
+prompt {
+    background-color: @accent-color;
+    text-color:       @base;
+    padding:          6px 12px;
+    border-radius:    6px;
+}
+
+entry {
+    padding:          6px;
+    text-color:       @text;
+    placeholder:      "Search...";
+    placeholder-color: @overlay0;
+}
+
+listview {
+    fixed-height:     0;
+    border:           0px;
+    spacing:          4px;
+    scrollbar:        false;
+    lines:            8;
+}
+
+element {
+    padding:          8px 12px;
+    border-radius:    6px;
+    spacing:          8px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @text;
+}
+
+element selected.normal {
+    background-color: @surface1;
+    text-color:       @accent-color;
+    border:           1px;
+    border-color:     @accent-color;
+}
+
+element-icon {
+    size:             1.2em;
+}
+
+element-text {
+    vertical-align:   0.5;
+    text-color:       inherit;
+}
