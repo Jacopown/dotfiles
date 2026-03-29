@@ -19,7 +19,7 @@ zinit light zsh-users/zsh-completions #Before compinit
 autoload -U compinit && compinit
 zinit cdreplay -q
 zstyle ':completion:*' matcher 'm:{a-z}={A-Za-Z}'
-eval "$(dircolors -b)"
+# eval "$(dircolors -b)"
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
@@ -70,6 +70,12 @@ alias l="ls -l"
 alias vim="nvim"
 alias mamba="micromamba"
 
-source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+elif [[ "$OSTYPE" == "linux"* ]]; then
+  [ -s "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
+fi
 
 zinit light zsh-users/zsh-syntax-highlighting #Must be the last to be sourced
