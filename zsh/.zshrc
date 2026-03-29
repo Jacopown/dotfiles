@@ -49,28 +49,41 @@ unsetopt autocd beep
 
 export VISUAL=nvim
 export EDITOR=nvim
-
 export BROWSER="firefox"
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export MAMBA_EXE='/opt/homebrew/opt/micromamba/bin/mamba';
+    export MAMBA_ROOT_PREFIX="$HOME/mamba";
+elif [[ "$OSTYPE" == "linux"* ]]; then
+    export MAMBA_EXE="$HOME/.local/bin/micromamba";
+    export MAMBA_ROOT_PREFIX="$HOME/micromamba";
+fi
+
+if [[ -v MAMBA_EXE ]]; then
+    __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__mamba_setup"
+    else
+        alias micromamba="$MAMBA_EXE"  # Fallback on help from micromamba activate
+    fi
+    unset __mamba_setup
+fi
+# <<< mamba initialize <<<
 
 alias ls="ls --color=auto"
 alias ll="ls -la"
 alias l="ls -l"
-
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/opt/homebrew/opt/micromamba/bin/mamba';
-export MAMBA_ROOT_PREFIX='/Users/jacopown/mamba';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
+alias vim="nvim"
+alias mamba="micromamba"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+elif [[ "$OSTYPE" == "linux"* ]]; then
+  [ -s "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
+fi
 
 zinit light zsh-users/zsh-syntax-highlighting #Must be the last to be sourced
