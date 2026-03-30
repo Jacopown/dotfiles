@@ -107,7 +107,7 @@
 
     "custom/power": {
         "format": "󰐥",
-        "on-click": "shutdown now",
+        "on-click": "~/Repos/dotfiles/rofi/powermenu.sh",
         "tooltip": false
     }
 }
