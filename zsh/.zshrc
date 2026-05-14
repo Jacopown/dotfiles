@@ -25,10 +25,13 @@ zstyle ':completion:*' menu no
 
 zinit light Aloxaf/fzf-tab #Before plugins which wrap widgets, like zsh-autosuggestions and syntax-highlight, but after compinit
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-history-substring-search
 
 set -o vi
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 # Tmux Sessionizer
 bindkey -s ^f "tmux-sessionizer\n"
 eval "$(fzf --zsh)"
