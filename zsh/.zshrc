@@ -52,10 +52,10 @@ export EDITOR=nvim
 export BROWSER="firefox"
 
 # >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
+# !! Contents within this block are managed by 'micromamba shell init' !!
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    export MAMBA_EXE='/opt/homebrew/opt/micromamba/bin/mamba';
-    export MAMBA_ROOT_PREFIX="$HOME/mamba";
+export MAMBA_EXE='/opt/homebrew/bin/micromamba';
+export MAMBA_ROOT_PREFIX="$HOME/mamba";
 elif [[ "$OSTYPE" == "linux"* ]]; then
     export MAMBA_EXE="$HOME/.local/bin/micromamba";
     export MAMBA_ROOT_PREFIX="$HOME/micromamba";
@@ -86,4 +86,13 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
   [ -s "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
 fi
 
+if [ -f "$HOME/.secrets" ]; then
+    source "$HOME/.secrets"
+fi
+
+# Added by Antigravity CLI installer
+export PATH="/Users/jacopown/.local/bin:$PATH"
+
 zinit light zsh-users/zsh-syntax-highlighting #Must be the last to be sourced
+
+
