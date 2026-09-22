@@ -94,7 +94,8 @@ if [ -f "$HOME/.secrets" ]; then
 fi
 
 # Added by Antigravity CLI installer
-export PATH="/Users/jacopown/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
 
 zinit light zsh-users/zsh-syntax-highlighting #Must be the last to be sourced
 
