@@ -54,8 +54,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 export BROWSER="firefox"
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'micromamba shell init' !!
+# Micromamba initialization
 if [[ "$OSTYPE" == "darwin"* ]]; then
 export MAMBA_EXE='/opt/homebrew/bin/micromamba';
 export MAMBA_ROOT_PREFIX="$HOME/mamba";
@@ -73,7 +72,6 @@ if [[ -v MAMBA_EXE ]]; then
     fi
     unset __mamba_setup
 fi
-# <<< mamba initialize <<<
 
 alias ls="ls --color=auto"
 alias ll="ls -la"

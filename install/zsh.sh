@@ -8,9 +8,9 @@ ensure_pkg zsh
 
 # Install Mamba / Micromamba if missing
 if ! command -v "mamba" &> /dev/null && ! command -v "micromamba" &> /dev/null; then
-  log "running command: ${SHELL} <(curl -L micro.mamba.pm/install.sh)"
+  log "running command: INIT_YES=no ${SHELL} <(curl -L micro.mamba.pm/install.sh)"
   if [[ "$dry_run" == "0" ]]; then
-    "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+    INIT_YES=no "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
   fi
 fi
 
